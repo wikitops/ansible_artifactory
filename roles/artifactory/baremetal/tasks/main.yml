@@ -1,0 +1,22 @@
+---
+
+- name: ARTIFACTORY | Include OS-specific variables
+  include_vars: "{{ ansible_os_family }}.yml"
+
+- name: ARTIFACTORY | Manage dependencies
+  include_tasks: "{{ ansible_os_family | lower }}.yml"
+
+- name: ARTIFACTORY | Install
+  package:
+    name: jfrog-artifactory-{{ artifactory_licence_type }}
+    state: present
+  notify: Restart artifactory
+
+- name: ARTIFACTORY | Configuration
+  template:
+    src: opt/jfrog/artifactory/default.j2
+    dest: /opt/jfrog/artifactory/default
+    owner: "{{ artifactory_user }}"
+    group: "{{ artifactory_user }}"
+    mode: 0644
+  notify: Restart artifactory

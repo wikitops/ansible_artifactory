@@ -1,0 +1,10 @@
+---
+
+- name: ARTIFACTORY DEBIAN | Add repository key
+  apt_key:
+    url: "{{ artifactory_apt_key_url }}"
+
+- name: ARTIFACTORY DEBIAN | Add repository
+  apt_repository:
+    repo: "{{ artifactory_repository }}"
+    state: present

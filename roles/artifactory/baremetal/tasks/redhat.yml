@@ -1,0 +1,11 @@
+---
+
+- name: ARTIFACTORY REDHAT | Add repository
+  yum_repository:
+    baseurl: "{{ artifactory_repository.url }}"
+    description: "{{ artifactory_repository.description }}"
+    enabled: "{{ artifactory_repository.enabled }}"
+    gpgcheck: "{{ artifactory_repository.gpgcheck }}"
+    name: "{{ artifactory_repository.name }}"
+    state: "{{ artifactory_repository.state }}"
+    reposdir: "{{ artifactory_repository.reposdir }}"

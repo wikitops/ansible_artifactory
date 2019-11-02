@@ -1,0 +1,43 @@
+---
+
+###
+# JFROG ARTIFACTORY
+###
+
+# Version
+artifactory_version: latest
+
+# Licence
+artifactory_licence_type: oss # oss / cpp-ce / pro
+
+# Directory
+artifactory_home_dir: /var/opt/jfrog/artifactory
+
+###
+# DOCKER
+###
+
+# Network
+artifactory_docker_network:
+  - name: artifactory
+    state: present
+
+# Stack
+artifactory_docker:
+  - name: artifactory
+    image: docker.bintray.io/jfrog/artifactory-{{ artifactory_licence_type }}:{{ artifactory_version }}
+    state: started
+    network: artifactory
+    ports:
+      - 8081:8081/tcp
+    volumes:
+      - "{{ artifactory_home_dir }}:/var/opt/jfrog/artifactory"
+    ulimits:
+      nproc: 65535
+      nofile:
+        soft: 32000
+        hard: 40000
+
+# Java
+artifactory_java_xms: 512m
+artifactory_java_xmx: 4g

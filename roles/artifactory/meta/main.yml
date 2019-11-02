@@ -1,0 +1,9 @@
+---
+
+dependencies:
+
+  - role: artifactory/baremetal
+    when: artifactory_install_type == "baremetal"
+
+  - role: artifactory/docker
+    when: artifactory_install_type == "docker"

@@ -1,0 +1,12 @@
+---
+
+###
+# JFROG ARTIFACTORY
+###
+
+# Licence
+artifactory_licence_type: oss # oss / ce / pro
+
+# Java
+artifactory_java_xmx: 512m
+artifactory_java_xms: 4g

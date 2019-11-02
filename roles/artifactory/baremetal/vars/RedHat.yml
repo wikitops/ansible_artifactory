@@ -1,0 +1,15 @@
+---
+
+###
+# JFROG ARTIFACTORY
+###
+
+# Repository
+artifactory_repository:
+  baseurl: https://jfrog.bintray.com/artifactory-pro-rpms
+  description: "JFrog Artifactory"
+  enabled: yes
+  gpgcheck: no
+  name: bintray--jfrog-artifactory-pro-rpms
+  state: present
+  repo_gpgcheck: no

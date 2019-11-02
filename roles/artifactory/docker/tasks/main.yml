@@ -1,0 +1,30 @@
+---
+
+- name: ARTIFACTORY DOCKER | Create data directory
+  file:
+    path: "{{ artifactory_home_dir }}"
+    owner: 1030 # Artifactory docker user in container
+    group: 1030
+    mode: 0755
+    state: directory
+
+- name: ARTIFACTORY DOCKER | Create the network
+  docker_network:
+    name: "{{ artifactory_docker_network.name }}"
+    state: "{{ artifactory_docker_network.state }}"
+
+- name: ARTIFACTORY DOCKER | Deploy the container
+  docker_container:
+    name: "{{ artifactory_docker.name }}"
+    image: "{{ artifactory_docker.image }}"
+    state: "{{ artifactory_docker.state }}"
+    restart: yes
+    ports: "{{ artifactory_docker.ports }}"
+    env:
+      EXTRA_JAVA_OPTIONS: "-Xms{{ artifactory_java_xms }} -Xmx{{ artifactory_java_xmx }} -Xss256k -XX:+UseG1GC"
+    networks:
+      - name: "{{ artifactory_docker.network }}"
+    volumes: "{{ artifactory_docker.volumes }}"
+    ulimits:
+      - "nproc:{{ artifactory_docker.ulimits.nproc }}"
+      - "nofile:{{ artifactory_docker.ulimits.nofile.soft }}:{{ artifactory_docker.ulimits.nofile.hard }}"

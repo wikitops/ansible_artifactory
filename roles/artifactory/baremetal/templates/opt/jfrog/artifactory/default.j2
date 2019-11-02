@@ -1,0 +1,20 @@
+#!/bin/sh
+
+# {{ ansible_managed }}
+
+#Default values
+export ARTIFACTORY_HOME=/var/opt/jfrog/artifactory
+export ARTIFACTORY_USER=artifactory
+#export JAVA_HOME=/opt/java/1.8.0
+#export START_LOCAL_REPLICATOR=true
+
+#export START_LOCAL_MDS=true
+#export START_LOCAL_ROUTER=true
+
+export TOMCAT_HOME=/opt/jfrog/artifactory/tomcat
+export ARTIFACTORY_PID=/var/opt/jfrog/run/artifactory.pid
+
+export JAVA_OPTIONS="-server -Xms{{ artifactory_java_xms }} -Xmx{{ artifactory_java_xmx }} -Xss256k -XX:+UseG1GC -XX:OnOutOfMemoryError=\"kill -9 %p\""
+export JAVA_OPTIONS="$JAVA_OPTIONS -Djruby.compile.invokedynamic=false -Dfile.encoding=UTF8 -Dartdist=deb -Dorg.apache.tomcat.util.buf.UDecoder.ALLOW_ENCODED_SLASH=true -Djava.security.egd=file:/dev/./urandom"
+# Timeout waiting for artifactory to start
+# START_TMO=60

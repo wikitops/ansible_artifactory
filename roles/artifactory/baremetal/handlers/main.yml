@@ -1,0 +1,7 @@
+---
+
+- name: Restart artifactory
+  systemd:
+    name: artifactory
+    state: restarted
+    enabled: yes

@@ -1,0 +1,9 @@
+---
+
+###
+# JFROG ARTIFACTORY
+###
+
+# Repository
+artifactory_repository: "deb https://jfrog.bintray.com/artifactory-debs {{ ansible_lsb.codename }} main"
+artifactory_apt_key_url: https://bintray.com/user/downloadSubjectPublicKey?username=jfrog
