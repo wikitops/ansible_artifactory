@@ -42,7 +42,7 @@ Once it's done, you just have to provision the Vagrant instance and the Ansible 
 $ vagrant up
 ```
 
-If everything run as expected, you should be able to reached the web interface : http://10.0.5.41:8081/
+If everything run as expected, you should be able to reached the web interface : http://10.0.0.11:8081/
 
 Default logins are : admin / password
 
@@ -63,7 +63,7 @@ Once it's done, you just have to provision the Vagrant instance and the Ansible 
 $ vagrant up
 ```
 
-If everything run as expected, you should be able to reached the web interface : http://10.0.5.41:8081/
+If everything run as expected, you should be able to reached the web interface : http://10.0.0.11:8081/
 
 #### Destroy
 
