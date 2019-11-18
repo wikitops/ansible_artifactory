@@ -8,7 +8,7 @@
 artifactory_version: latest
 
 # Licence
-artifactory_licence_type: pro # oss / cpp-ce / pro
+artifactory_licence_type: oss # oss / cpp-ce / pro
 
 # Directory
 artifactory_home_dir: /var/opt/jfrog/artifactory
